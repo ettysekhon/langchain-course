@@ -2,8 +2,8 @@ import asyncio
 
 from agent import QueueCallbackHandler, agent_executor
 from fastapi import FastAPI
-from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 
 # initilizing our application
 app = FastAPI()
@@ -16,13 +16,16 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
+
 # streaming function
 async def token_generator(content: str, streamer: QueueCallbackHandler):
-    task = asyncio.create_task(agent_executor.invoke(
-        input=content,
-        streamer=streamer,
-        verbose=True  # set to True to see verbose output in console
-    ))
+    task = asyncio.create_task(
+        agent_executor.invoke(
+            input=content,
+            streamer=streamer,
+            verbose=True,  # set to True to see verbose output in console
+        )
+    )
     # initialize various components to stream
     async for token in streamer:
         try:
@@ -41,6 +44,7 @@ async def token_generator(content: str, streamer: QueueCallbackHandler):
             continue
     await task
 
+
 # invoke function
 @app.post("/invoke")
 async def invoke(content: str):
@@ -53,5 +57,5 @@ async def invoke(content: str):
         headers={
             "Cache-Control": "no-cache",
             "Connection": "keep-alive",
-        }
+        },
     )

@@ -17,4 +17,5 @@ dependencies = [
     "google-search-results>=2.4.2",
     "scikit-image==0.23.2",
     "matplotlib==3.10.3",
+    "python-dotenv>=1.0.1",
 ]
