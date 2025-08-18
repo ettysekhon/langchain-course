@@ -1,4 +1,4 @@
-# LangChain Course
+# LangChain Course & [LangChain Tutorials](https://python.langchain.com/docs/tutorials/)
 
 Welcome to the LangChain course by Aurelio AI!
 
@@ -84,3 +84,7 @@ class FixedDallEAPIWrapper(DallEAPIWrapper):
         image_urls = self.separator.join([item.url for item in response.data])
         return image_urls
 ```
+
+### LangChain Tutorials
+
+I've added completed [LangChain Tutorials](https://python.langchain.com/docs/tutorials/) in the [langchain-tutorials folder](langchain-tutorials)

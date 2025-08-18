@@ -19,6 +19,7 @@
     "./chapters",
     "./chapters/09-capstone",
     "./chapters/ollama",
+    "./langchain-tutorials"
   ],
   "makefile.configureOnOpen": false
 }
